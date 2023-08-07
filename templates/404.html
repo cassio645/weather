@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+
+    <!-- Formulário onde será informado o nome da cidade -->
+    <header style="background-color: {{data_style.bg}}a5; color: {{data_style.cor}};">
+        <div class="formulario" style="height: 70px;">
+            
+        </div>
+    </header>
+
+<!-- Página inicial -->
+<div class="container text-center">
+    <div class="row">
+        <div class="card border-0 col-md-9">
+            <img class="card-img" src="../static/img/page404.png" height="auto" alt="Card image cap">
+            <div class="card-body">
+                <h3>Tente novamente</h3>
+                <a href="/" class="btn btn-primary">Página inicial</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

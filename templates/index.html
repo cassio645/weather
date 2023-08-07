@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Previsão do Tempo{% endblock %}
+
+{% block content %}
+
+    <!-- Formulário onde será informado o nome da cidade -->
+    <header style="background-color: {{data_style.bg}}a5; color: {{data_style.cor}};">
+        <div class="formulario">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="city">Informe a cidade </label><br>
+
+                <div class="input-with-button">
+                    <input class="input-text" type="text" id="city" name="city" placeholder=" São Paulo">
+                    <input class="icon-button" type="submit" value="➔">
+                </div>
+
+            </form>
+        </div>
+    </header>
+
+{% if data_weather %}
+
+<div class="container">
+    <!-- Card principal(parte superior) onde é mostrado as informações atuais do clima -->
+    <div class="card col-md-7">
+        <div class="card-body card-principal" style="background-color: {{data_style.bg}}; color: {{data_style.cor}};">
+
+            <div class="row">
+                <h2 class="card-title"><i class="bi bi-geo-alt"></i>{{ data_weather.city }} {{ data_weather.country_code }} {{data_weather.time}}</h2>
+
+                <div class="col-md-4 icon-description"> 
+                    <img src="../static/icons/{{ data_weather.icon }}.svg" alt="svg" width="50px"><br>
+                    {{ data_weather.description | title }}
+                </div>
+
+                <div class="col-md-4 temperature">{{ data_weather.temperature }}</div>
+
+                <div class="col-md-4 more-information">
+                    {{ data_weather.sensation }}<br>
+                    {{ data_weather.wind }}<br>
+                    {{ data_weather.humidity }}
+                </div>
+
+
+                <!-- Lista de card secundários onde mostra as informações das próximas previsões -->
+                <div class="card-group">
+                    {% for data in more_data %}
+                        <div class="card border-0">
+                            <div class="card-body" style="background-color: {{data_style.bg}}; color: {{data_style.cor}};">
+                                
+                                <div class="card-title">{{data.horario}}</div>
+                                <div class="card-text" style="text-align: center;">
+                                    <img src="../static/icons/{{ data.icon }}.svg" alt="svg" width="50px"><br>
+                                    {{data.temp}}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+
+            </div>
+        
+        
+        </div>
+    </div>
+
+</div>
+
+{% else %}
+
+<!-- Página inicial -->
+<div class="container">
+    <div class="row">
+        <div class="card border-0 col-md-9">
+            <img class="card-img" src="../static/img/clarod.jpg" height="250px" alt="Card image cap">
+            <div class="card-body">
+                <h3>Previsão do Tempo: Um site criado com Django e API de Clima</h3>
+                <p class="card-text">O site "Previsão do Tempo" é uma aplicação web desenvolvida utilizando a framework Django, com o objetivo de fornecer informações atualizadas sobre as condições climáticas em diferentes regiões. Através da integração com uma API de clima, os usuários podem consultar as previsões do tempo para cidades específicas e obter dados como temperatura, umidade, velocidade do vento e previsões para as próximas horas.</p>
+            </div>
+
+            <p style="text-align: center;"><strong>Linguagens e Tecnologias usadas no projeto.</strong></p>
+            <table class="table table-responsive">
+                <tbody>
+                  <tr>
+                    <td><img src="../static/code/python.svg" alt="python"> Python 3.9</td>
+                    <td><img src="../static/code/django.svg" alt="django"> Django 4.2</td>
+                    <td><img src="../static/code/github.svg" alt="github" width="40px"> <a href="#"> Código Github</a></td>
+                    
+                  </tr>
+                  <tr>
+                    <td><img src="../static/code/html-5.svg" alt="html-5">HTML5</td>
+                    <td><img src="../static/code/css3.svg" alt="csss3">&nbsp;&nbsp;&nbsp;CSS3</td>
+                    <td><img src="../static/code/bootstrap.png" width="40px" alt="csss3"> Bootstrap5</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="text-align: center;">API <a href="https://home.openweathermap.org/" target="_blank">https://home.openweathermap.org/</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+            
+
+
+
+{% endif %}
+
+{% endblock %}
+
+<!--
+    
+        <p class="card-text">
+           
+            
+            
+            
+
+            
+        </p>
+-->
