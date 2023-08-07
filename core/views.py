@@ -73,8 +73,7 @@ def get_icon(icon, horario):
     else:
         wallpaper = 'chuva'
 
-    #return [str(icon[:2] + periodo), str(wallpaper) + periodo]
-    return [str(icon[:2] + periodo), 'chuvan']
+    return [str(icon[:2] + periodo), str(wallpaper) + periodo]
 
 
 # Função da página inicial
