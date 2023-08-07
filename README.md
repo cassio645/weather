@@ -7,13 +7,13 @@ Este é um aplicativo web desenvolvido usando Django que permite aos usuários o
 
 ## 💻 Como usar
 
-1. Acesse o site [Site Clima Tempo](#)
+1. Acesse o site [Site Clima Tempo](https://tempo645.vercel.app/)
 2. Pesquise o nome de alguma cidade.
 
 
 ## 📍 Tecnologias
 
-- Python 3.10
+- Python 3.9
 - Django 4.2
 - Html
 - Css
